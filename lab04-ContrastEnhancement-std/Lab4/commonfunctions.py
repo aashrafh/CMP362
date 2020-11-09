@@ -75,6 +75,9 @@ def show_3d_image_filtering_in_freq(img, f):
     filter_in_freq = fftpack.fft2(f, img.shape)
     filtered_img_in_freq = np.multiply(img_in_freq, filter_in_freq)
     
+    # Contrast Stretching/Enhancement Using Log Transform ==> T(x) = clog(1+x)
+    # If there is a pixel intensity of 0 in the image, then log (0)=infinity. 1 is added, to make the minimum value at least 1
+    # The zero-frequency is shifted to the center, simply because this is how people normally expect to see a spectrum
     img_in_freq = fftpack.fftshift(np.log(np.abs(img_in_freq)+1))
     filtered_img_in_freq = fftpack.fftshift(np.log(np.abs(filtered_img_in_freq)+1))
     
