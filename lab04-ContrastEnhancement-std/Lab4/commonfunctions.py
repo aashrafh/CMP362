@@ -13,15 +13,13 @@ from scipy import fftpack
 import math
 
 from skimage.util import random_noise
-from skimage.filters import median
-from skimage.feature import canny
+from skimage.filters import median  # Non-Linear Filter
+from skimage.feature import canny   # Edge Detection
 
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
 
-import matplotlib.pyplot as plt
-from matplotlib import cm
+from matplotlib import cm  #A mixin class to map scalar data to RGBA
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
-import numpy as np
 
 # Edges
 from skimage.filters import sobel_h, sobel, sobel_v,roberts, prewitt
@@ -50,7 +48,7 @@ def show_images(images,titles=None):
 def show_3d_image(img, title):
     fig = plt.figure()
     fig.set_size_inches((12,8))
-    ax = fig.gca(projection='3d')
+    ax = fig.gca(projection='3d') # Get the current axes
 
     # Make data.
     X = np.arange(0, img.shape[0], 1)
@@ -60,7 +58,7 @@ def show_3d_image(img, title):
 
     # Plot the surface.
     surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
-                           linewidth=0, antialiased=False)
+                           linewidth=0, antialiased=False)  # Anti-aliased: distortion artifacts when representing a high-resolution image at a lower resolution
 
     # Customize the z axis.
     ax.set_zlim(0, 8)
