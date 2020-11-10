@@ -73,6 +73,7 @@ def show_3d_image(img, title):
 def show_3d_image_filtering_in_freq(img, f):
     img_in_freq = fftpack.fft2(img)
     filter_in_freq = fftpack.fft2(f, img.shape)
+    # Convolution if time = Multiply in Frequency
     filtered_img_in_freq = np.multiply(img_in_freq, filter_in_freq)
     
     # Contrast Stretching/Enhancement Using Log Transform ==> T(x) = clog(1+x)
