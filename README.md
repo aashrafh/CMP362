@@ -1,2 +1,2 @@
 # CMP362
-Any codes related to the CMP362-Image Processing course in my college
+Solutions of the CMP362-Image Processing course's labs in college
